@@ -7,20 +7,27 @@ $primary-dark: #6750A4;
   overflow-x: auto;
   white-space: nowrap;
   padding: 1rem 0;
+  display: flex;
+  justify-content: center; // Center the container
 }
 
 .sliderWrapper {
   display: flex;
-  gap: 1rem;
+  gap: 2rem; // Increase gap for more space between boxes
+  justify-content: center; // Center align the product boxes
 }
 
 .productBox {
-  width: 400px;
-  height: 440px;
+  width: 600px; // Increase width for larger box size
+  height: 550px; // Increase height
   border-radius: 0.5rem;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); // Stronger shadow for more depth
+  padding: 1.5rem; // Increase padding
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 
   &.productBoxEven {
     background-color: $primary-light;
@@ -32,21 +39,25 @@ $primary-dark: #6750A4;
 }
 
 .productImage {
-  height: 10rem;
+  height: 18rem; // Further increase image height
   width: 100%;
   object-fit: cover;
   border-radius: 0.5rem;
+  margin-bottom: 1rem; // Add some space below the image
 }
 
 .productTitle {
-  margin-top: 0.5rem;
-  font-size: 1.125rem; // lg
-  font-weight: 600; // semibold
-  color: $primary-dark;
+  color: #F3F4F6; /* Textfarbe */
+  text-align: left; /* Links ausrichten */
+  font-size: 1.75rem; /* Larger font size for title */
+  font-weight: bold; /* Optional: Fettschrift für den Titel */
+  margin-top: 0.5rem; /* Optional: Abstand nach oben */
 }
 
 .productDescription {
-  margin-top: 0.25rem;
-  font-size: 0.875rem; // sm
-  color: $primary-dark;
+  color: #F3F4F6; /* Textfarbe */
+  text-align: left; /* Links ausrichten */
+  font-size: 1.1rem; /* Larger font size for readability */
+  margin-top: 0.5rem;
+  line-height: 1.6; /* Larger line-height for readability */
 }

@@ -204,28 +204,35 @@ export default function MenoPausePage() {
 
         {/* Slider Section */}
         {showSlider && (
-          <div className="mt-4 p-4 bg-[#E8DEF8] rounded-lg">
-            <label
-              htmlFor="default-range"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Default range
-            </label>
-            <input
-              id="default-range"
-              type="range"
-              defaultValue="50"
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-            />
-          </div>
-        )}
+  <div className="mt-4 p-4 bg-[#E8DEF8] rounded-lg">
+    <label
+      htmlFor="menopause-stage"
+      className="block mb-2 text-sm font-medium text-gray-900 text-center"
+    >
+      Wechseljahresstadium
+    </label>
+    <input
+      id="menopause-stage"
+      type="range"
+      min="0"
+      max="3"
+      step="1"
+      defaultValue="0"
+      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+    />
+    <div className="flex justify-between text-sm mt-2 text-gray-900">
+      <span>Prämenopause</span>
+      <span>Perimenopause</span>
+      <span>Menopause</span>
+      <span>Postmenopause</span>
+    </div>
+  </div>
+)}
+
 
         {/* Additional Text and Buttons based on selection */}
         {selectedButton && (
           <div className="mt-4 p-4 bg-[#E8DEF8] rounded-lg">
-            <p className="text-lg font-semibold mb-4 text-[#6750A4]">
-              {`Text for Button ${selectedButton}`}
-            </p>
 
             <div className="flex justify-center">
               <Link
@@ -242,7 +249,7 @@ export default function MenoPausePage() {
                   (e.currentTarget.style.backgroundColor = "#D29DAC")
                 }
               >
-                Aktion 1
+                Last question ahead!
               </Link>
             </div>
           </div>
