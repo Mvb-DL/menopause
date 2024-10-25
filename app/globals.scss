@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Import Roboto Serif font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@400;700&display=swap');
+
+
+body {
+    background-color: #E6E0E9;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Serif", serif;
+  }
+  
+  svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; // Ensures the SVG is behind other content
+}
+
+.links {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 18px;
+    font-family: sans-serif;
+    z-index: 10; // Keeps the links above the SVG
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    margin-left: 1em;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a img.icon {
+    display: inline-block;
+    height: 1em;
+    margin: 0 0 -0.1em 0.3em;
+}
+
+// SVG animation styles
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// Updated animation durations for slower movement
+.out-top {
+    animation: rotate 80s linear infinite;  // doubled from 20s to 40s
+    transform-origin: 13px 25px;
+}
+
+.in-top {
+    animation: rotate 40s linear infinite;  // doubled from 10s to 20s
+    transform-origin: 13px 25px;
+}
+
+.out-bottom {
+    animation: rotate 100s linear infinite;  // doubled from 25s to 50s
+    transform-origin: 84px 93px;
+}
+
+.in-bottom {
+    animation: rotate 60s linear infinite;  // doubled from 15s to 30s
+}

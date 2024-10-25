@@ -1,0 +1,52 @@
+// Define color variables
+$primary-light: #D0BCFF;
+$secondary-light: #D29DAC;
+$primary-dark: #6750A4;
+
+.sliderContainer {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 1rem 0;
+}
+
+.sliderWrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.productBox {
+  width: 400px;
+  height: 440px;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  flex-shrink: 0;
+
+  &.productBoxEven {
+    background-color: $primary-light;
+  }
+
+  &.productBoxOdd {
+    background-color: $secondary-light;
+  }
+}
+
+.productImage {
+  height: 10rem;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.productTitle {
+  margin-top: 0.5rem;
+  font-size: 1.125rem; // lg
+  font-weight: 600; // semibold
+  color: $primary-dark;
+}
+
+.productDescription {
+  margin-top: 0.25rem;
+  font-size: 0.875rem; // sm
+  color: $primary-dark;
+}
