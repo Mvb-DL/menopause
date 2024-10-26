@@ -56,23 +56,22 @@ export default function MenoPausePage() {
 {data && (
   <div className="flex flex-col gap-4 mb-8">
     <h1 className="text-2xl font-bold text-center text-[#6750A4]">
-      Dashboard
     </h1>
     <div className="grid grid-cols-2 gap-4">
       <div>
         <p className="text-[#6750A4] font-semibold">Name:</p>
-        <p className="text-gray-700">Max Mustermann</p>
+        <p className="text-gray-700">Elena Friedlich</p>
       </div>
       <div>
-        <p className="text-[#6750A4] font-semibold">Alter:</p>
-        <p className="text-gray-700">45 Jahre</p>
+        <p className="text-[#6750A4] font-semibold">Age:</p>
+        <p className="text-gray-700">45</p>
       </div>
       <div>
-        <p className="text-[#6750A4] font-semibold">Blutgruppe:</p>
+        <p className="text-[#6750A4] font-semibold">Bloodgroup:</p>
         <p className="text-gray-700">A+</p>
       </div>
       <div>
-        <p className="text-[#6750A4] font-semibold">Größe:</p>
+        <p className="text-[#6750A4] font-semibold">Height:</p>
         <p className="text-gray-700">1.75 m</p>
       </div>
     </div>
@@ -98,7 +97,7 @@ export default function MenoPausePage() {
             <div className="grid grid-cols-2 gap-4">
               {data.steps && (
                 <div>
-                  <p className="text-[#6750A4] font-semibold">Steps today:</p>
+                  <p className="text-[#6750A4] font-semibold">Steps Today:</p>
                   <p className="text-gray-700">{data.steps}</p>
                 </div>
               )}
@@ -110,7 +109,7 @@ export default function MenoPausePage() {
               )}
               {data.sleepAnalysis && (
                 <div>
-                  <p className="text-[#6750A4] font-semibold">Sleep Duration (last night):</p>
+                  <p className="text-[#6750A4] font-semibold">Sleep Duration Last Night:</p>
                   <p className="text-gray-700">
                     {data.sleepAnalysis.sleepDuration} hours
                   </p>
@@ -213,7 +212,7 @@ export default function MenoPausePage() {
       htmlFor="menopause-stage"
       className="block mb-2 text-sm font-medium text-gray-900 text-center"
     >
-      Wechseljahresstadium
+      Menopause Stage
     </label>
     <input
       id="menopause-stage"
@@ -225,7 +224,7 @@ export default function MenoPausePage() {
       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
     />
     <div className="flex justify-between text-sm mt-2 text-gray-900">
-      <span>Prämenopause</span>
+      <span>Premenopause</span>
       <span>Perimenopause</span>
       <span>Menopause</span>
       <span>Postmenopause</span>
