@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import { Line, Bar, Pie, Doughnut } from "react-chartjs-2";
 import MenopauseTips from "../menoPauseTips/page";
 import SymptomSummary from "../SymptomSummary/page";
+import TranscribedTextList from "../TranscribtedText/page";
 import "chart.js/auto";
 
 export default function Dashboard() {
-  const [showCharts, setShowCharts] = useState(false); // Toggle for showing charts
-  const [showTips, setShowTips] = useState(false); // Toggle for Menopause Tips
-  const [showSum, setShowSum] = useState(false); // Toggle for Symptom Summary
+  const [showCharts, setShowCharts] = useState(false); 
+  const [showTips, setShowTips] = useState(false); 
+  const [showSum, setShowSum] = useState(false); 
 
   // Sample chart data
   const stepData = {
@@ -54,11 +55,21 @@ export default function Dashboard() {
     ],
   };
 
+  const sampleEntries = [
+    "Today I saw a beautiful sunrise over the mountains.",
+    "The weather was perfect, so I took a long walk by the lake.",
+    "Met an old friend and we talked for hours about life and dreams.",
+    "I spent the afternoon reading a fascinating book on history.",
+    "In the evening, I tried a new recipe and it turned out delicious."
+  ];
+
   return (
     <div className="min-h-screen bg-gray-100 p-8">
+      {/* Render the TranscribedTextList component above the Dashboard content */}
+      <TranscribedTextList entries={sampleEntries} />
+
       <h1 className="text-3xl font-bold text-center mb-8">Dashboard</h1>
 
-      {/* Button to toggle chart visibility */}
       <div className="flex justify-center mb-8">
         <button
           onClick={() => setShowCharts(!showCharts)}
@@ -71,8 +82,6 @@ export default function Dashboard() {
 
       {showCharts && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          
-          {/* Steps Line Chart */}
           <div className="p-6 bg-white rounded-lg shadow-lg flex flex-col items-center" style={{ height: "350px" }}>
             <h2 className="text-2xl font-semibold mb-4">Weekly Steps</h2>
             <div className="w-full h-full">
@@ -80,7 +89,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Calories Burned Bar Chart */}
           <div className="p-6 bg-white rounded-lg shadow-lg flex flex-col items-center" style={{ height: "350px" }}>
             <h2 className="text-2xl font-semibold mb-4">Calories Burned</h2>
             <div className="w-full h-full">
@@ -88,7 +96,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Workout Types Pie Chart */}
           <div className="p-6 bg-white rounded-lg shadow-lg flex flex-col items-center" style={{ height: "350px" }}>
             <h2 className="text-2xl font-semibold mb-4">Workout Distribution</h2>
             <div className="w-full h-full">
@@ -96,7 +103,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Sleep Hours Doughnut Chart */}
           <div className="p-6 bg-white rounded-lg shadow-lg flex flex-col items-center" style={{ height: "350px" }}>
             <h2 className="text-2xl font-semibold mb-4">Sleep Hours</h2>
             <div className="w-full h-full">
@@ -106,7 +112,6 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* Buttons for Tips and Summary */}
       <div className="flex justify-center mt-8 space-x-4">
         <button 
           onClick={() => setShowTips(!showTips)} 
@@ -125,19 +130,8 @@ export default function Dashboard() {
         </button>
       </div>
 
-      {/* Conditionally Render Menopause Tips */}
-      {showTips && (
-        <div className="mt-8">
-          <MenopauseTips />
-        </div>
-      )}
-
-      {/* Conditionally Render Symptom Summary */}
-      {showSum && (
-        <div className="mt-8">
-          <SymptomSummary />
-        </div>
-      )}
+      {showTips && <div className="mt-8"><MenopauseTips /></div>}
+      {showSum && <div className="mt-8"><SymptomSummary /></div>}
     </div>
   );
 }

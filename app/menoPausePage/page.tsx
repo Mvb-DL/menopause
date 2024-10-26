@@ -46,30 +46,39 @@ export default function MenoPausePage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-8 bg-[#E6E0E9]">
       {/* Dashboard Container */}
-      <div className="max-w-4xl w-full mx-auto bg-[#E8DEF8] shadow-lg rounded-lg p-6">
+      <div className="max-w-6xl h-440  w-full mx-auto bg-[#E8DEF8] shadow-lg rounded-lg p-6">
         {/* User Information */}
         <div className="flex flex-col gap-4 mb-8">
           <h1 className="text-2xl font-bold text-center text-[#6750A4]">
             Dashboard
           </h1>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-[#6750A4] font-semibold">Name:</p>
-              <p className="text-gray-700">Max Mustermann</p>
-            </div>
-            <div>
-              <p className="text-[#6750A4] font-semibold">Alter:</p>
-              <p className="text-gray-700">45 Jahre</p>
-            </div>
-            <div>
-              <p className="text-[#6750A4] font-semibold">Blutgruppe:</p>
-              <p className="text-gray-700">A+</p>
-            </div>
-            <div>
-              <p className="text-[#6750A4] font-semibold">Größe:</p>
-              <p className="text-gray-700">1.75 m</p>
-            </div>
-          </div>
+         {/* User Information */}
+{data && (
+  <div className="flex flex-col gap-4 mb-8">
+    <h1 className="text-2xl font-bold text-center text-[#6750A4]">
+      Dashboard
+    </h1>
+    <div className="grid grid-cols-2 gap-4">
+      <div>
+        <p className="text-[#6750A4] font-semibold">Name:</p>
+        <p className="text-gray-700">Max Mustermann</p>
+      </div>
+      <div>
+        <p className="text-[#6750A4] font-semibold">Alter:</p>
+        <p className="text-gray-700">45 Jahre</p>
+      </div>
+      <div>
+        <p className="text-[#6750A4] font-semibold">Blutgruppe:</p>
+        <p className="text-gray-700">A+</p>
+      </div>
+      <div>
+        <p className="text-[#6750A4] font-semibold">Größe:</p>
+        <p className="text-gray-700">1.75 m</p>
+      </div>
+    </div>
+  </div>
+)}
+
         </div>
 
         {/* Health Data Section */}
@@ -150,57 +159,52 @@ export default function MenoPausePage() {
         ) : null}
 
         {/* Buttons */}
-        <div className="flex justify-around gap-4 mb-4 mt-4">
-          <button
-            onClick={() => handleButtonClick(1)}
-            className="w-1/3 px-6 py-3 text-white rounded-lg focus:outline-none"
-            style={{
-              backgroundColor: "#6750A4",
-              transition: "background-color 0.3s",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#D0BCFF")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "#6750A4")
-            }
-          >
-            Button 1
-          </button>
-          <button
-            onClick={() => handleButtonClick(2)}
-            className="w-1/3 px-6 py-3 text-white rounded-lg focus:outline-none"
-            style={{
-              backgroundColor: "#D29DAC",
-              transition: "background-color 0.3s",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#E8DEF8")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "#D29DAC")
-            }
-          >
-            Button 2
-          </button>
-          <button
-            onClick={() => handleButtonClick(3)}
-            className="w-1/3 px-6 py-3 text-white rounded-lg focus:outline-none"
-            style={{
-              backgroundColor: "#E6E0E9",
-              color: "#6750A4", // Dark text for readability
-              transition: "background-color 0.3s",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#D0BCFF")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "#E6E0E9")
-            }
-          >
-            Button 3
-          </button>
-        </div>
+        <div className="flex flex-col items-center mb-4 mt-4">
+  <h1 className="text-lg font-semibold text-center text-[#6750A4] mb-8">
+    Choose the healthcare topic that applies to you:
+  </h1>
+
+  <div className="flex justify-around gap-4 w-full">
+    <button
+      onClick={() => handleButtonClick(1)}
+      className="w-1/3 px-6 py-3 text-white rounded-lg focus:outline-none"
+      style={{
+        backgroundColor: "#6750A4",
+        transition: "background-color 0.3s",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#D0BCFF")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#6750A4")}
+    >
+      Menopause
+    </button>
+    <button
+      onClick={() => handleButtonClick(2)}
+      className="w-1/3 px-6 py-3 text-white rounded-lg focus:outline-none"
+      style={{
+        backgroundColor: "#D29DAC",
+        transition: "background-color 0.3s",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#E8DEF8")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#D29DAC")}
+    >
+      Quit Smoking
+    </button>
+    <button
+      onClick={() => handleButtonClick(3)}
+      className="w-1/3 px-6 py-3 text-white rounded-lg focus:outline-none"
+      style={{
+        backgroundColor: "#E6E0E9",
+        color: "#6750A4", // Dark text for readability
+        transition: "background-color 0.3s",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#D0BCFF")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#E6E0E9")}
+    >
+      Run Faster
+    </button>
+  </div>
+</div>
+
 
         {/* Slider Section */}
         {showSlider && (

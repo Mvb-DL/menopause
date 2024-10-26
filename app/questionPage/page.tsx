@@ -1,36 +1,18 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../styles/question.scss";
 import Link from "next/link";
-import Question from "../Question/page"
+import Question from "../Question/page";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons';
 
 export default function TypingEffectPage() {
   const fullText = "Elena's diary. Day 187. 10/26/2024.";
-  const [displayedText, setDisplayedText] = useState("");
-  const [showInput, setShowInput] = useState(false);
   const [transcribedText, setTranscribedText] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
   const [showFullTextInTopLeft, setShowFullTextInTopLeft] = useState(false);
-  const [showQuestion, setShowQuestion] = useState(false); // Zustand für Fragekomponente
-
-  useEffect(() => {
-    if (!fullText) return;
-
-    let currentIndex = 0;
-
-    const typingInterval = setInterval(() => {
-      if (currentIndex < fullText.length) {
-        setDisplayedText((prev) => prev + fullText[currentIndex]);
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-        setTimeout(() => setShowInput(true), 200);
-      }
-    }, 100);
-
-    return () => clearInterval(typingInterval);
-  }, [fullText]);
+  const [showQuestion, setShowQuestion] = useState(false);
 
   const startRecording = async () => {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -85,32 +67,35 @@ export default function TypingEffectPage() {
   };
 
   const handleSaveDiary = () => {
-    setShowQuestion(true); // Aktiviert die Fragekomponente
+    setShowQuestion(true);
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-8 relative">
-      {/* Ursprünglicher Text, der während des Tippens angezeigt wird */}
-      <h1
-        className={`text-3xl font-bold mb-8 ${displayedText === fullText || showFullTextInTopLeft ? "invisible" : ""}`}
-      >
-        {displayedText}
-      </h1>
+      {/* Direkte Anzeige des vollständigen Textes, nur wenn showQuestion false ist */}
+      {!showQuestion && (
+        <h1 className="text-3xl font-bold mb-8 text-center">{fullText}</h1>
+      )}
 
       {/* Text in der oberen linken Ecke, wenn die Aufnahme gestartet wurde */}
-      {showFullTextInTopLeft && <h1 className="top-left-text">{fullText}</h1>}
+      {showFullTextInTopLeft && !showQuestion && (
+        <h1 className="top-left-text">{fullText}</h1>
+      )}
 
-      {showInput && !showQuestion && ( // Zeigt Eingabeform an, wenn Fragekomponente nicht aktiv ist
+      {!showQuestion && (
         <form className="flex flex-col items-center space-y-4">
+          {/* Sofort sichtbarer Aufnahme-Button */}
           <button
             type="button"
             onClick={startRecording}
-            className={`flex items-center justify-center w-16 h-16 rounded-full ${isRecording ? "bg-gray-400" : "bg-[#6750A4]"} text-white focus:outline-none`}
+            className={`flex items-center justify-center w-16 h-16 rounded-full ${
+              isRecording ? "bg-gray-400" : "bg-[#6750A4]"
+            } text-white focus:outline-none`}
             disabled={isRecording}
+            aria-label="Start Recording"
+            style={{ border: '2px solid white' }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 14a3 3 0 003-3V5a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a5 5 0 01-10 0h-2a7 7 0 0014 0h-2zm-5 5a7 7 0 01-7-7H3a9 9 0 0018 0h-2a7 7 0 01-7 7z" />
-            </svg>
+            <FontAwesomeIcon icon={faMicrophone} className="text-white text-3xl" />
           </button>
 
           {isRecording && (
@@ -153,7 +138,7 @@ export default function TypingEffectPage() {
         </form>
       )}
 
-      {showQuestion && <Question />} {/* Fragekomponente laden, wenn showQuestion true ist */}
+      {showQuestion && <Question />}
     </div>
   );
 }

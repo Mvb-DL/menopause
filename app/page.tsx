@@ -13,7 +13,7 @@ function ApiPage({ isVisible }) {
   <div className="flex flex-col items-center"> {/* Center align buttons */}
     <Link href="/menoPausePage">
       <button
-        className="w-64 mb-4 px-6 py-3 text-white rounded-lg focus:outline-none"
+        className="w-64 h-16 mb-4 px-6 py-3 text-white rounded-lg focus:outline-none"
         style={{
           backgroundColor: "#6750A4",
           transition: "background-color 0.3s",
@@ -23,10 +23,10 @@ function ApiPage({ isVisible }) {
       >
         Connect to Apple Health
       </button>
-    </Link>
-
+      </Link>
+    <Link href="/menoPausePage">
     <button
-      className="w-64 mb-4 px-6 py-3 text-white rounded-lg focus:outline-none"
+      className="w-64 h-16 mb-4 px-6 py-3 text-white rounded-lg focus:outline-none"
       style={{
         backgroundColor: "#D29DAC",
         transition: "background-color 0.3s",
@@ -36,20 +36,23 @@ function ApiPage({ isVisible }) {
     >
       Connect to Clue
     </button>
-
+    </Link>
     {/* Button with a plus icon */}
     <button
-      className="w-64 mb-4 px-6 py-3 text-white rounded-lg focus:outline-none flex items-center justify-center"
-      style={{
-        backgroundColor: "#E6E0E9",
-        color: "#6750A4", // Dunkler Text für Kontrast auf hellen Hintergrund
-        transition: "background-color 0.3s",
-      }}
-      onMouseEnter={(e) => (e.target.style.backgroundColor = "#D0BCFF")}
-      onMouseLeave={(e) => (e.target.style.backgroundColor = "#E6E0E9")}
-    >
-      <span className="text-xl">+</span> {/* Plus icon as text */}
-    </button>
+  className="w-46 mb-4 px-6 py-3 text-white rounded-lg focus:outline-none flex items-center justify-center"
+  style={{
+    backgroundColor: "#E6E0E9",
+    color: "#6750A4", // Dark text for contrast on a light background
+    transition: "background-color 0.3s",
+    border: "2px solid rgba(0, 0, 0, 0.7)", // Black border with 0.7 opacity
+  }}
+  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#D0BCFF")}
+  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#E6E0E9")}
+>
+  <span className="text-xl">+</span> {/* Plus icon as text */}
+</button>
+
+
   </div>
 </div>
 

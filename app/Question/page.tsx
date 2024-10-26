@@ -1,11 +1,33 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Question() {
+  const fullMessage =
+    "Oh that sounds like a busy day! Maybe some rest and relaxation can help you calm your hot flushes down a bit :)";
+  const [displayedMessage, setDisplayedMessage] = useState("");
   const [transcribedText, setTranscribedText] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
+
+  // Effekt für schrittweises Anzeigen des Textes
+  useEffect(() => {
+    let currentIndex = 0;
+
+    const typingInterval = setInterval(() => {
+      if (currentIndex < fullMessage.length) {
+        setDisplayedMessage((prev) => prev + fullMessage[currentIndex]);
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 50); // Geschwindigkeit des Effekts in Millisekunden
+
+    return () => clearInterval(typingInterval);
+  }, [fullMessage]);
 
   const startRecording = async () => {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -60,9 +82,8 @@ export default function Question() {
 
   return (
     <div className="question-container flex flex-col items-center space-y-4">
-      <h2>Thank you for saving your diary!</h2>
-      <p>Here is a question to reflect on your day:</p>
-      <p>What is one thing you learned today?</p>
+      {/* Nachricht mit Typing-Effekt */}
+      <p className="typing-effect text-center text-2xl font-semibold mb-6">{displayedMessage}</p>
 
       <button
         type="button"
@@ -72,15 +93,7 @@ export default function Question() {
         } text-white focus:outline-none`}
         disabled={isRecording}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M12 14a3 3 0 003-3V5a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a5 5 0 01-10 0h-2a7 7 0 0014 0h-2zm-5 5a7 7 0 01-7-7H3a9 9 0 0018 0h-2a7 7 0 01-7 7z" />
-        </svg>
+        <FontAwesomeIcon icon={faMicrophone} className="text-white text-3xl" />
       </button>
 
       {isRecording && (
@@ -103,7 +116,7 @@ export default function Question() {
       {/* Button to navigate to resultPage */}
       <Link href="/resultPage">
         <button className="mt-4 px-6 py-2 bg-[#6750A4] text-white rounded-lg hover:bg-[#543a85] focus:outline-none">
-          Go to Result Page
+          Finish Diary
         </button>
       </Link>
     </div>

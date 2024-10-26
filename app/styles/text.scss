@@ -1,0 +1,53 @@
+/* styles/text.scss */
+
+.transcribed-text-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 20px;
+    overflow-x: auto;
+  }
+  
+  .transcribed-entry {
+    background-color: #ffffff;
+    padding: 16px; /* Reduzierter Innenabstand */
+    min-width: 300px; /* Kleinere Mindestbreite */
+    max-width: 400px; /* Kleinere Maximalbreite */
+    min-height: 200px; /* Kleinere Mindesthöhe */
+    max-height: 300px; /* Kleinere Maximalhöhe */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 8px; /* Kleinere Abrundung */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    text-align: left;
+  }
+  
+  .first-word {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #4f46e5;
+  }
+  
+  .editable-sentence {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  
+  .editable-text {
+    margin-left: 0.2em;
+    border: none;
+    resize: none;
+    background-color: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 0.875rem; /* Kleinere Schriftgröße */
+    color: #333;
+    white-space: pre-wrap;
+    line-height: 1.4; /* Reduzierter Zeilenabstand */
+  }
+  
