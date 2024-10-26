@@ -108,20 +108,13 @@ export default function TypingEffectPage() {
             </button>
           )}
 
-          {transcribedText && (
+{transcribedText && (
             <article lang="en" className="transcribed-text">
               <h1>Elena's Diary</h1>
               <h2>Day 187 - 10/26/2024</h2>
               <section aria-label="Diary Entry">
-                {transcribedText.split(". ").map((sentence, index) => {
-                  const [firstWord, ...restOfSentence] = sentence.split(" ");
-                  return (
-                    <div key={index} className="editable-sentence">
-                      <span className="first-word">{firstWord}</span>
-                      <textarea defaultValue={` ${restOfSentence.join(" ")}.`} className="editable-text" />
-                    </div>
-                  );
-                })}
+                {/* Display the transcribed text as normal text */}
+                <p>{transcribedText}</p>
               </section>
             </article>
           )}
