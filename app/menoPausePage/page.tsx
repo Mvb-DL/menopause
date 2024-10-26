@@ -26,7 +26,7 @@ export default function MenoPausePage() {
           setData(jsonData);
           setPolling(false); // Stop polling once data is received
         } else {
-          console.error("Failed to fetch data:", response.statusText);
+          //console.error("Failed to fetch data:", response.statusText);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
